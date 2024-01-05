@@ -22,8 +22,8 @@ public class ApplicationConfig {
         return new FacturaCabeceraService(new FacturaCabeceraServiceImpl(facturaCabeceraOut));
     }
     @Bean
-    public FacturaCabeceraOut facturaCabeceraOut(FacturaCabeceraJPARepositoryAdapter facturaCabeceraJPARepositoryAdapter){
-        return facturaCabeceraJPARepositoryAdapter;
+    public FacturaCabeceraOut facturaCabeceraOut( FacturaCabeceraJPARepositoryAdapter jpaRepositoryAdapter){
+        return jpaRepositoryAdapter;
     }
     @Bean
     public ProductoService productoService(ProductoOut productoOut){
