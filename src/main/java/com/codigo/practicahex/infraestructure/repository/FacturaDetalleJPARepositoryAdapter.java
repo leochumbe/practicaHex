@@ -1,24 +1,23 @@
 package com.codigo.practicahex.infraestructure.repository;
 
-import com.codigo.practicahex.domain.models.FacturaCabecera;
 import com.codigo.practicahex.domain.models.FacturaDetalle;
 import com.codigo.practicahex.domain.ports.out.FacturaDetalleOut;
-import com.codigo.practicahex.infraestructure.entity.FacturaCabeceraEntity;
 import com.codigo.practicahex.infraestructure.entity.FacturaDetalleEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Repository
+@Component
 public class FacturaDetalleJPARepositoryAdapter implements FacturaDetalleOut {
     private final FacturaDetalleJPARepository facturaDetalleJPARepository;
 
     public FacturaDetalleJPARepositoryAdapter(FacturaDetalleJPARepository facturaDetalleJPARepository) {
         this.facturaDetalleJPARepository = facturaDetalleJPARepository;
     }
+
+
     @Override
     public List<FacturaDetalle> getTodos() {
         List<FacturaDetalle> facturadetalleList = facturaDetalleJPARepository.findAll().stream().map(FacturaDetalleEntity::toDomainModel).collect(Collectors.toList());
@@ -33,7 +32,7 @@ public class FacturaDetalleJPARepositoryAdapter implements FacturaDetalleOut {
         }
         catch (Exception e)
         {
-            System.out.println(e.getCause());
+            e.printStackTrace();
         }
         return null;
     }

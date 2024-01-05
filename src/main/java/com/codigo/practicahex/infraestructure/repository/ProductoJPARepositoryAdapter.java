@@ -4,18 +4,19 @@ import com.codigo.practicahex.domain.models.Producto;
 import com.codigo.practicahex.domain.ports.out.ProductoOut;
 import com.codigo.practicahex.infraestructure.entity.ProductoEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 //import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-@Repository
+@Component
 public class ProductoJPARepositoryAdapter implements ProductoOut {
     private final ProductoJPARepository productoJPARepository;
 
     public ProductoJPARepositoryAdapter(ProductoJPARepository productoJPARepository) {
         this.productoJPARepository = productoJPARepository;
     }
+
+
     @Override
     public List<Producto> getTodos() {
         List<Producto> productList = productoJPARepository.findAll().stream().map(ProductoEntity::toDomainModel).collect(Collectors.toList());

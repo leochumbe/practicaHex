@@ -4,18 +4,19 @@ import com.codigo.practicahex.domain.models.FacturaCabecera;
 import com.codigo.practicahex.domain.ports.out.FacturaCabeceraOut;
 import com.codigo.practicahex.infraestructure.entity.FacturaCabeceraEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Repository
+@Component
 public class FacturaCabeceraJPARepositoryAdapter implements FacturaCabeceraOut {
     private final FacturaCabeceraJPARepository facturaCabeceraJPARepository;
+
     public FacturaCabeceraJPARepositoryAdapter(FacturaCabeceraJPARepository facturaCabeceraJPARepository) {
         this.facturaCabeceraJPARepository = facturaCabeceraJPARepository;
     }
+
     @Override
     public List<FacturaCabecera> getTodos() {
             List<FacturaCabecera> facturaList = facturaCabeceraJPARepository.findAll().stream().map(FacturaCabeceraEntity::toDomainModel).collect(Collectors.toList());
