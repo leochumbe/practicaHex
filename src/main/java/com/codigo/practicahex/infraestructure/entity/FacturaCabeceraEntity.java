@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,12 +16,16 @@ public class FacturaCabeceraEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "factura_id")
     private Long id;
     private String cliente_nombre;
     private String cliente_num_documento;
     private Date fecha_emision;
     private Float total;
 
+    // relation with FacturaDetalleEntity
+    @OneToMany(mappedBy = "facturaCabecera")
+    private List<FacturaDetalleEntity> facturaDetalleEntityList;
     public FacturaCabeceraEntity() {
     }
 
