@@ -13,27 +13,30 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
-@Component
 public class FacturaDetalleJPARepositoryAdapter implements FacturaDetalleOut {
-
     private final FacturaDetalleJPARepository facturaDetalleJPARepository;
 
     public FacturaDetalleJPARepositoryAdapter(FacturaDetalleJPARepository facturaDetalleJPARepository) {
         this.facturaDetalleJPARepository = facturaDetalleJPARepository;
     }
-
     @Override
     public List<FacturaDetalle> getTodos() {
         List<FacturaDetalle> facturadetalleList = facturaDetalleJPARepository.findAll().stream().map(FacturaDetalleEntity::toDomainModel).collect(Collectors.toList());
         return facturadetalleList;
     }
-
     @Override
     public FacturaDetalle addFacturaDetalle(FacturaDetalle facturaDetalle) {
         FacturaDetalleEntity facturaDetalleEntity = FacturaDetalleEntity.fromDomainModel(facturaDetalle);
-        return facturaDetalleJPARepository.save(facturaDetalleEntity).toDomainModel();
+        try {
+            FacturaDetalleEntity facturaDetalleEntitySave = facturaDetalleJPARepository.save(facturaDetalleEntity);
+            return facturaDetalleEntitySave.toDomainModel();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getCause());
+        }
+        return null;
     }
-
     @Override
     public Optional<FacturaDetalle> getFacturaDetalle(Long id) {
         return facturaDetalleJPARepository.findById(id).map(FacturaDetalleEntity::toDomainModel);

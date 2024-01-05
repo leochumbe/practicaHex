@@ -4,37 +4,32 @@ import com.codigo.practicahex.domain.models.FacturaCabecera;
 import com.codigo.practicahex.domain.ports.out.FacturaCabeceraOut;
 import com.codigo.practicahex.infraestructure.entity.FacturaCabeceraEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Component
+@Repository
 public class FacturaCabeceraJPARepositoryAdapter implements FacturaCabeceraOut {
-
     private final FacturaCabeceraJPARepository facturaCabeceraJPARepository;
-
     public FacturaCabeceraJPARepositoryAdapter(FacturaCabeceraJPARepository facturaCabeceraJPARepository) {
         this.facturaCabeceraJPARepository = facturaCabeceraJPARepository;
     }
-
     @Override
     public List<FacturaCabecera> getTodos() {
             List<FacturaCabecera> facturaList = facturaCabeceraJPARepository.findAll().stream().map(FacturaCabeceraEntity::toDomainModel).collect(Collectors.toList());
             return facturaList;
     }
-
     @Override
     public FacturaCabecera addFacturaCabecera(FacturaCabecera facturaCabecera) {
         FacturaCabeceraEntity facturaCabeceraEntity = FacturaCabeceraEntity.fromDomainModel(facturaCabecera);
         return facturaCabeceraJPARepository.save(facturaCabeceraEntity).toDomainModel();
     }
-
     @Override
     public Optional<FacturaCabecera> getFacturaCabecera(Long id) {
         return facturaCabeceraJPARepository.findById(id).map(FacturaCabeceraEntity::toDomainModel);
     }
-
     @Override
     public Optional<FacturaCabecera> updateFacturaCabecera(Long id, FacturaCabecera facturaCabecera) {
         if(facturaCabeceraJPARepository.existsById(id)){
@@ -43,7 +38,6 @@ public class FacturaCabeceraJPARepositoryAdapter implements FacturaCabeceraOut {
         }
         return Optional.empty();
     }
-
     @Override
     public boolean deleteFacturaCabecera(Long id) {
         if(facturaCabeceraJPARepository.existsById(id)){
