@@ -11,7 +11,6 @@ public class FacturaCabeceraService implements FacturaCabeceraIn {
     private final FacturaCabeceraIn facturaCabeceraIn;
 
     public FacturaCabeceraService(FacturaCabeceraIn facturaCabeceraIn) {
-
         this.facturaCabeceraIn = facturaCabeceraIn;
     }
 

@@ -15,6 +15,7 @@ public class ProductoService implements ProductoIn {
         this.productoIn = productoIn;
     }
 
+
     @Override
     public List<Producto> obtenerTodos() {
         return productoIn.obtenerTodos();
