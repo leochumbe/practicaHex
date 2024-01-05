@@ -21,30 +21,24 @@ public class ApplicationConfig {
     public FacturaCabeceraService facturaCabeceraService(FacturaCabeceraOut facturaCabeceraOut){
         return new FacturaCabeceraService(new FacturaCabeceraServiceImpl(facturaCabeceraOut));
     }
-
     @Bean
     public FacturaCabeceraOut facturaCabeceraOut(FacturaCabeceraJPARepositoryAdapter facturaCabeceraJPARepositoryAdapter){
         return facturaCabeceraJPARepositoryAdapter;
     }
-
     @Bean
     public ProductoService productoService(ProductoOut productoOut){
         return new ProductoService((new ProductoServiceImpl(productoOut)));
     }
-
     @Bean
     public ProductoOut productoOut(ProductoJPARepositoryAdapter productoJPARepositoryAdapter){
         return productoJPARepositoryAdapter;
     }
-
     @Bean
     public FacturaDetalleService facturaDetalleService(FacturaDetalleOut facturaDetalleOut){
         return new FacturaDetalleService((new FacturaDetalleServiceImpl(facturaDetalleOut)));
     }
-
     @Bean
     public FacturaDetalleOut facturaDetalleOut(FacturaDetalleJPARepositoryAdapter facturaDetalleJPARepositoryAdapter){
         return facturaDetalleJPARepositoryAdapter;
     }
 }
-
