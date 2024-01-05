@@ -2,7 +2,7 @@ package com.codigo.practicahex.infraestructure.controller;
 
 import com.codigo.practicahex.application.service.ProductoService;
 import com.codigo.practicahex.domain.models.Producto;
-import com.codigo.practicahex.infraestructure.entity.ProductoEntity;
+//import com.codigo.practicahex.infraestructure.entity.ProductoEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
