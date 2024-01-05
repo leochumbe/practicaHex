@@ -1,7 +1,7 @@
 package com.codigo.practicahex.domain.ports.out;
 
 import com.codigo.practicahex.domain.models.Producto;
-import com.codigo.practicahex.infraestructure.entity.ProductoEntity;
+//import com.codigo.practicahex.infraestructure.entity.ProductoEntity;
 
 import java.util.List;
 import java.util.Optional;
