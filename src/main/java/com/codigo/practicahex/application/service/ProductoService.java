@@ -2,7 +2,7 @@ package com.codigo.practicahex.application.service;
 
 import com.codigo.practicahex.domain.models.Producto;
 import com.codigo.practicahex.domain.ports.in.ProductoIn;
-import com.codigo.practicahex.infraestructure.entity.ProductoEntity;
+//import com.codigo.practicahex.infraestructure.entity.ProductoEntity;
 
 import java.util.List;
 import java.util.Optional;
